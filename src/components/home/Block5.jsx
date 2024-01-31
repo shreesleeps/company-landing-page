@@ -27,12 +27,12 @@ function TextInput(
                 onChange={(e) => {
                   onChange(e.target.value);
                 }}
-                onFocus={() => {
-                  setActive(false);
-                }}
-                onBlur={() => {
-                  setActive(true);
-                }}
+                // onFocus={() => {
+                //   setActive(false);
+                // }}
+                // onBlur={() => {
+                //   setActive(true);
+                // }}
                 placeholder=""
                 className="bg-[#F3F3F3] tracking-[0.56px] pTxt outline-none h-[46px] px-[20px] py-[14px] flex items-center w-full"
               />
