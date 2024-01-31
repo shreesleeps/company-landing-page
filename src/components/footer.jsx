@@ -11,6 +11,7 @@ function Footer() {
     { title: "main", to: "/" },
     { title: "gallery", to: "/gallery" },
     { title: "projects", to: "/projects" },
+    { title: "certifications", to: "/certifications" },
   ];
   const socialPages = [
     { title: "instagram", to: "/" },
