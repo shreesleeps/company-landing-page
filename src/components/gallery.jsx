@@ -4,13 +4,51 @@ import { LuMoveLeft, LuMoveRight } from "react-icons/lu";
 import { MdClose, MdOutlineClose } from "react-icons/md";
 
 function Gallery() {
-  const [imagesPerRow, setImagesperRow] = useState(5);
-  const [rows, setRows] = useState(2);
+  const [imagesPerRow, setImagesperRow] = useState(1);
+  const [rows, setRows] = useState(5);
   const [page, setPage] = useState(1);
   const [active, setActive] = useState({});
 
+  // useEffect(() => {
+  //   if (window.innerWidth < 1080) {
+  //     setRows(5);
+  //     setImagesperRow(1);
+  //   } else {
+  //     setRows(2);
+  //     setImagesperRow(5);
+  //   }
+  // });
+
+  function ori() {
+    if (window.innerWidth < 1080) {
+      setRows(5);
+      setImagesperRow(1);
+    } else {
+      setRows(2);
+      setImagesperRow(5);
+    }
+  }
+
+  useEffect(() => {
+    function handleResize() {
+      ori();
+    }
+
+    function handleLoad() {
+      ori();
+    }
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("load", handleLoad);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("load", handleLoad);
+    };
+  }, []);
+
   return (
-    <div className="px-[130px] w-full h-max flex flex-col items-start pb-[50px]">
+    <div className="px-[130px] w-full h-max flex flex-col items-start pb-[50px] max-[1080px]:px-[10px]">
       <div className="flex flex-row justify-start gap-[20px] pb-[30px]">
         <div className="h1">Photo</div>
         <div className="h2">Gallery</div>
@@ -29,7 +67,7 @@ function Gallery() {
                 <div
                   className={`w-full h-full ${
                     active[imageName]
-                      ? "absolute z-[60] w-full h-[calc(100vh-100px)] px-[100px] py-[50px] left-0 top-0 bg-[#fff] backdrop-filter backdrop-blur-sm"
+                      ? "absolute z-[60] w-full h-[calc(100vh-100px)] px-[100px] max-[1080px]:px-[10px] py-[50px] left-0 top-0 bg-[#fff] backdrop-filter backdrop-blur-sm max-[1080px]:h-screen"
                       : ""
                   }`}
                 >
